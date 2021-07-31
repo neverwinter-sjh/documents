@@ -17,6 +17,12 @@ yarn create react-app my-app --template typescript
 
 create-react-app을 이용해서 template typescript로 설치한다.
 
+typescript를 사용하지 않을 때는 아래와 같이 생성한다.
+
+```
+yarn create react-app my-app
+```
+
 ### eslint 플러그인 설치
 
 ```
