@@ -106,6 +106,7 @@ module.exports = {
 ### cross-env 설치
 
 각종 설정 node 환경변수를 window와 mac, iinux에서 같은 방식으로 추가해주기 위해 설치한다.
+
 주요 목적은 react를 실행할 때 browser가 계속 띄워지므로 이를 제거하기 위해서이다.
 
 ```
