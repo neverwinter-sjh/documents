@@ -1,8 +1,8 @@
-# React Typescript 설정
+# CRA + Typescript 설정
 
 ## Stacks
 
-* React
+* React(create-react-app)
 * Typescript
 * Eslint
 * Prettier
