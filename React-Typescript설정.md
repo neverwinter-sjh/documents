@@ -122,12 +122,12 @@ yarn add -D cross-env
 "start": "cross-env BROWSER=none react-scripts start",
 ```
 
-### package.lock.json 제거
+### package-lock.json 제거
 
 eslint init때 생성되었던 npm lock을 제거한다.
 
 ```bash
-rm -rf package.lock.json
+rm -rf package-lock.json
 ```
 
 
