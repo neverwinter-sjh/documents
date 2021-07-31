@@ -23,7 +23,7 @@ create-react-app을 이용해서 template typescript로 설치한다.
 yarn eslint --init
 ```
 
-eslint의 기본 설정을 init하고 마지막에 npm 설치는 하지 않는다. yarn으로 한꺼번에 설치.
+eslint의 기본 설정을 init하고 마지막에 npm 설치를 해준다.
 
 이후에 prettier 관련 플러그인을 설치한다.
 
