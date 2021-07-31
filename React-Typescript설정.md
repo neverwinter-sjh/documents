@@ -32,26 +32,21 @@ eslint의 기본 설정을 init하고 마지막에 npm 설치를 해준다.
 4. Does your project use Typescript (Yes)
 5. Where does your code run? > Check Browser & Node (click space to check)
 6. Use a popular style guide
-7. Standard
+7. Airbnb
 8. Javascript
 9. NPM 설치 (YES)
 
-#### prettier 관련 플러그인 설치
-
-이후에 prettier 관련 플러그인을 설치한다.
+Airbnb 관련 설정은 쓰지 않을 것이므로 삭제한다.
 
 ```
-yarn add -D eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-jsx-a11y eslint-plugin-import
+yarn remove eslint-config-airbnb
 ```
 
 ### 플러그인 설명
 
 * eslint : 코드의 문법을 검사하는 린팅과 코드의 스타일을 잡아주는 포맷팅 기능
-* prettier : 코드의 스타일을 잡아주는 포맷팅 기능
 * @typescript-eslint/eslint-plugin : Typescript 관련 린팅규칙을 설정하는 플러그인
 * @typescript-eslint/parser : Typescript 를 파싱하기 위해 사용
-* eslint-config-prettier : prettier와 충돌을 일으키는 ESLint 규칙들을 비활성화 시키는 config
-* eslint-plugin-prettier : Prettier에서 인식하는 코드상의 포맷 오류를 ESLint 오류로 출력
 * eslint-plugin-react : React에 관한 린트설정을 지원
 * eslint-plugin-react-hooks : React Hooks의 규칙을 강제하도록 하는 플러그인
 * eslint-plugin-jsx-a11y : JSX 내의 접근성 문제에 대해 즉각적인 AST 린팅 피드백을 제공
@@ -63,29 +58,26 @@ yarn add -D eslint prettier eslint-config-prettier eslint-plugin-prettier eslint
 module.exports = {
   env: {
     browser: true,
-    commonjs: true
+    commonjs: true,
   },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-    'standard'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 2020,
-    sourceType: 'module'
+    sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    'prettier/prettier': 'error'
-  }
-}
+  },
+};
 
 ```
 
