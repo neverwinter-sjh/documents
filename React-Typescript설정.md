@@ -12,7 +12,7 @@
 ### create-react-app
 
 ```
-yarn create react-app myApp --template typescript
+yarn create react-app my-app --template typescript
 ```
 
 create-react-app을 이용해서 template typescript로 설치한다.
