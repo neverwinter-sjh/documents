@@ -99,4 +99,31 @@ module.exports = {
 
 ### cross-env 설치
 
-react를 
+각종 설정 node 환경변수를 window와 mac, iinux에서 같은 방식으로 추가해주기 위해 설치한다.
+주요 목적은 react를 실행할 때 browser가 계속 띄워지므로 이를 제거하기 위해서이다.
+
+```
+yarn add -D cross-env
+```
+
+설치 후에 package.json을 수정한다.
+
+```
+"start": "react-scripts start",
+
+=>
+
+"start": "cross-env BROWSER=none react-scripts start",
+```
+
+### package.lock.json 제거
+
+eslint init때 생성되었던 npm lock을 제거한다.
+
+```bash
+rm -rf package.lock.json
+```
+
+
+
+
