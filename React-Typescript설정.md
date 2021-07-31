@@ -63,28 +63,30 @@ yarn add -D eslint prettier eslint-config-prettier eslint-plugin-prettier eslint
 module.exports = {
   env: {
     browser: true,
-    commonjs: true,
+    commonjs: true
   },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
+    'standard'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
     ecmaVersion: 2020,
-    sourceType: 'module',
-	},
+    sourceType: 'module'
+  },
   plugins: ['react', '@typescript-eslint'],
   rules: {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    'prettier/prettier': 'error',
-  },
-};
+    'prettier/prettier': 'error'
+  }
+}
+
 ```
 
 ### .prettierrc 설정
