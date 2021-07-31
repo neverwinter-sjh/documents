@@ -25,6 +25,19 @@ yarn eslint --init
 
 eslint의 기본 설정을 init하고 마지막에 npm 설치를 해준다.
 
+#### eslint init 순서
+1. To check syntax, find problems, and enforce code style
+2. Javascript modules (import/export)
+3. React
+4. Does your project use Typescript (Yes)
+5. Where does your code run? > Check Browser & Node (click space to check)
+6. Use a popular style guide
+7. Standard
+8. Javascript
+9. NPM 설치 (YES)
+
+#### prettier 관련 플러그인 설치
+
 이후에 prettier 관련 플러그인을 설치한다.
 
 ```
