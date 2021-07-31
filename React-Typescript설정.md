@@ -96,3 +96,7 @@ module.exports = {
   "proseWrap": "never"
 }
 ```
+
+### cross-env 설치
+
+react를 
