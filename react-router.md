@@ -8,6 +8,12 @@ React Router를 설치하고 관련 옵션을 설정한다.
 yarn add react-router
 ```
 
+Typescript를 사용한다면 아래와 같이 추가한다.
+
+```
+yarn add -D @types/react-router-dom
+```
+
 ## 설정
 
 index.js에는 별도로 포함시킬 것은 없다.
