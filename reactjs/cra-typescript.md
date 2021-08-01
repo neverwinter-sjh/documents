@@ -1,4 +1,4 @@
-# CRA + Typescript 설정
+# CRA + Typescript
 
 ## Stacks
 
