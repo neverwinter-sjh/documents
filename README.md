@@ -4,5 +4,5 @@
 
 ## Reactjs 설치 및 설정
 
-* [CRA + Typescript 설치](https://github.com/neverwinter-sjh/documents/blob/main/cra-typescript.md)
-* [React Router 설치](https://github.com/neverwinter-sjh/documents/blob/main/react-router.md)
+* [CRA + Typescript 설치](https://github.com/neverwinter-sjh/documents/blob/main/reactjs/cra-typescript.md)
+* [React Router 설치](https://github.com/neverwinter-sjh/documents/blob/main/reactjs/react-router.md)
