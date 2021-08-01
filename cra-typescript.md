@@ -48,6 +48,12 @@ Airbnb 관련 설정은 쓰지 않을 것이므로 삭제한다.
 yarn remove eslint-config-airbnb
 ```
 
+yarn을 사용하고 있으므로 충돌 방지를 위해 npm lock을 제거한다.
+
+```bash
+rm -rf package-lock.json
+```
+
 ### 플러그인 설명
 
 * eslint : 코드의 문법을 검사하는 린팅과 코드의 스타일을 잡아주는 포맷팅 기능
@@ -123,13 +129,6 @@ yarn add -D cross-env
 "start": "cross-env BROWSER=none react-scripts start",
 ```
 
-### package-lock.json 제거
-
-eslint init때 생성되었던 npm lock을 제거한다.
-
-```bash
-rm -rf package-lock.json
-```
 
 
 
