@@ -17,6 +17,7 @@ yarn add -D @types/react-router-dom
 ## 설정
 
 index.js에는 별도로 포함시킬 것은 없다.
+
 app.js 혹은 router를 설정할 컴포넌트 파일에 아래와 같이 코드를 작성한다.
 
 [React Router 공식 사이트](https://reactrouter.com/web/guides/quick-start)
