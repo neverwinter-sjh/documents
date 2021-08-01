@@ -5,7 +5,7 @@ React Router를 설치하고 관련 옵션을 설정한다.
 ## 설치
 
 ```
-yarn add react-router react-router-dom
+yarn add react-router-dom
 ```
 
 Typescript를 사용한다면 아래와 같이 추가한다.
