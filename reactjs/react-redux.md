@@ -20,7 +20,7 @@ yarn add -D @types/react-redux
 
 테스트를 위해 예제로 숫자를 더하고 빼는 기능을 가진 counter 파일을 생성한다.
 
-### /src/store/modules/counter.ts
+### * /src/store/modules/counter.ts
 
 ```
 // Interface
