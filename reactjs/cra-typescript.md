@@ -52,6 +52,9 @@ yarn을 사용하고 있으므로 충돌 방지를 위해 npm lock을 제거한�
 
 ```bash
 rm -rf package-lock.json
+
+(windows)
+del /f /q /a package-lock.json 
 ```
 
 ### 플러그인 설명
