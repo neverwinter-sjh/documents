@@ -20,7 +20,7 @@ yarn add -D @types/react-redux
 
 테스트를 위해 예제로 숫자를 더하고 빼는 기능을 가진 counter 파일을 생성한다.
 
-### /src/store/modules/counter.ts
+## /src/store/modules/counter.ts
 
 ```
 // Interface
@@ -66,7 +66,7 @@ const reducer = (state: CounterState = initialState, action: CounterAction) => {
 export default reducer;
 ```
 
-### /src/store/rootReducer.ts
+## /src/store/rootReducer.ts
 
 ```
 import { combineReducers } from 'redux';
@@ -79,7 +79,7 @@ const rootReducer = combineReducers({
 export default rootReducer;
 ```
 
-### src/store/configureStore.ts
+## src/store/configureStore.ts
 
 ```
 import { createStore, applyMiddleware } from 'redux';
@@ -97,7 +97,7 @@ export type RootState = ReturnType<typeof store.getState>;
 export default store;
 ```
 
-### /src/index.ts
+## /src/index.ts
 
 ```
 import React from 'react';
@@ -122,7 +122,7 @@ ReactDOM.render(
 reportWebVitals();
 ```
 
-### /src/components/Counter.tsx
+## /src/components/Counter.tsx
 
 ```
 import React from 'react';
@@ -150,7 +150,7 @@ const Counter = ({
 export default Counter;
 ```
 
-### /src/components/CounterContainer.tsx
+## /src/components/CounterContainer.tsx
 
 ```
 import React, { useCallback } from 'react';
@@ -171,7 +171,7 @@ const CounterContainer = () => {
 export default CounterContainer;
 ```
 
-### /src/App.tsx
+## /src/App.tsx
 ```
 import React from 'react';
 import CounterContainer from './components/CounterContainer';
