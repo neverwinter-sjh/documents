@@ -132,7 +132,11 @@ yarn add -D cross-env
 "start": "cross-env BROWSER=none react-scripts start",
 ```
 
+## Sass(Scss) 사용하기
 
+```
+yarn add sass sass-loader
+```
 
 
 
