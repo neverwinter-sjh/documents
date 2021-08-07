@@ -24,7 +24,8 @@ yarn add -D @types/react-redux
 
 ```
 // Interface
-type CounterAction = ReturnType<typeof increase> | ReturnType<typeof decrease>;
+type CounterAction = ReturnType<typeof increase> 
+  | ReturnType<typeof decrease>;
 
 type CounterState = {
   value: number;
