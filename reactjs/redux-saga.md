@@ -22,7 +22,10 @@ redux 설정 때 사용했던 counter example을 수정한다.
 import { delay, put, takeEvery, takeLatest } from 'redux-saga/effects';
 
 // Interface
-type CounterAction = ReturnType<typeof increase> | ReturnType<typeof decrease> | ReturnType<typeof increaseAsync> | ReturnType<typeof decreaseAsync>;
+type CounterAction = ReturnType<typeof increase> 
+  | ReturnType<typeof decrease> 
+  | ReturnType<typeof increaseAsync> 
+  | ReturnType<typeof decreaseAsync>;
 
 type CounterState = {
   value: number;
