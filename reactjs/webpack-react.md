@@ -151,10 +151,9 @@ module.exports = {
 ## src 폴더 구조
 
 ```
-src - assets
-            - css (sass 가능)
-            - images
-            - fonts
+src - assets - css (sass 가능)
+             - images
+             - fonts
 ```
 
 ## index.js
