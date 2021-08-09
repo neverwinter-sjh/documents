@@ -36,7 +36,6 @@ yarn add -D webpack webpack-cli html-loader file-loader css-loader sass-loader s
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = (env, options) => {
@@ -53,12 +52,6 @@ module.exports = (env, options) => {
     // 모듈 설정
     module: {
       rules: [
-        // { // pre 설정으로 eslint부터 로드하도록 설정
-        //   enforce: 'pre',
-        //   test: /\.js$/,
-        //   exclude: /node_modules/,
-        //   loader: 'eslint-loader',
-        // },
         {
           // js, jsx 파일을 babel-loader로 해석하여 트랜스파일링한다.
           test: /\.(js|jsx)$/,
@@ -67,19 +60,7 @@ module.exports = (env, options) => {
             loader: 'babel-loader',
           },
         },
-        {
-          // html 파일을 읽을 수 있다.
-          test: /\.html$/,
-          use: [
-            {
-              loader: 'html-loader',
-              options: {
-                minimize: true,
-              },
-            },
-          ],
-        },
-
+        
         // 파일 로더(주로 폰트 파일)
         {
           test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -103,8 +84,6 @@ module.exports = (env, options) => {
         filename: '[name].css',
         chunkFilename: '[id].css',
       }),
-      // 이전 build 삭제
-      new CleanWebpackPlugin(),
       // dotEnv 환경 파일 설정
       new Dotenv({
         safe: true, // load '.env.example' to verify the '.env' variables are all set. Can also be a string to a different file.
@@ -114,6 +93,9 @@ module.exports = (env, options) => {
         defaults: false, // load '.env.defaults' as the default values if empty.
       }),
     ],
+    resolve: {
+      extensions: ['.js', '.jsx', '.scss', '.css'],
+    },
     devtool: 'inline-source-map',
   };
 
@@ -351,12 +333,108 @@ yarn add -D typescript ts-loader @types/react @types/react-dom @types/webpack
 ### webpack.config.js
 
 ```
-// rules에 추가
-{
-  test: /\.(ts|tsx)$/,
-  exclude: /node_modules/,
-  use: 'ts-loader'
-},
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
+
+module.exports = (env, options) => {
+  const config = {
+    // 앱 시작 js 파일
+    entry: path.resolve(__dirname, './src/index.tsx'),
+
+    // 번들링 결과 파일 설정
+    output: {
+      publicPath: '/',
+      filename: 'bundle.[chunkhash].js',
+    },
+
+    // 모듈 설정
+    module: {
+      rules: [
+        {
+          //
+          test: /\.(js|jsx|ts|tsx)$/,
+          exclude: /node_modules/,
+          use: 'ts-loader',
+        },
+      
+        // 파일 로더(주로 폰트 파일)
+        {
+          test: /\.(woff|woff2|eot|ttf|otf)$/,
+          loader: 'file-loader',
+        },
+
+        // css, sass 파일 로더
+        {
+          test: /\.(css|sass|scss)$/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        },
+      ],
+    },
+    plugins: [
+      // 템플레이트를 사용할 수 있도록 설정
+      new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, './public/index.html'),
+      }),
+      // css 추출
+      new MiniCssExtractPlugin({
+        filename: '[name].css',
+        chunkFilename: '[id].css',
+      }),
+      // dotEnv 환경 파일 설정
+      new Dotenv({
+        safe: true, // load '.env.example' to verify the '.env' variables are all set. Can also be a string to a different file.
+        allowEmptyValues: true, // allow empty variables (e.g. `FOO=`) (treat it as empty string, rather than missing)
+        systemvars: true, // load all the predefined 'process.env' variables which will trump anything local per dotenv specs.
+        silent: true, // hide any errors
+        defaults: false, // load '.env.defaults' as the default values if empty.
+      }),
+    ],
+    resolve: {
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss', '.css'],
+    },
+    devtool: 'inline-source-map',
+  };
+
+  // 배포
+  if (options.mode === 'production') {
+    config.mode = 'production';
+    config.plugins = [
+      ...config.plugins,
+      ...[
+        new uglifyjsWebpackPlugin({
+          cache: true,
+          parallel: true,
+          sourceMap: true,
+        }),
+      ],
+    ];
+  } else {
+    // 개발
+    config.mode = 'development';
+    // 개발용 서버 설정
+    config.devServer = {
+      host: 'localhost',
+      port: process.env.PORT || 3000,
+      contentBase: path.resolve(__dirname, './src/assets/'), // 정적 파일을 배치할 폴더
+      open: true,
+      hot: true,
+      historyApiFallback: true,
+      stats: {
+        cached: false,
+        cachedAssets: false,
+        chunks: false,
+        chunkModules: false,
+        chunkOrigins: false,
+        modules: false,
+      },
+    };
+  }
+
+  return config;
+};
+
 ```
 
 ### tsconfig.json
@@ -416,4 +494,12 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
 };
+```
+
+### 파일 확장자 변경
+
+```
+index.jsx => index.tsx
+
+App.jsx => App.tsx
 ```
