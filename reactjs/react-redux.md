@@ -67,7 +67,46 @@ const reducer = (state: CounterState = initialState, action: CounterAction) => {
 export default reducer;
 ```
 
-### /src/store/rootReducer.ts
+### /src/store/modules/counter.js
+
+```
+// Constants
+export const INCREASE = 'counter/INCREASE';
+export const DECREASE = 'counter/DECREASE';
+
+// Actions
+export const increase = () => ({ type: INCREASE });
+export const decrease = () => ({ type: DECREASE });
+
+// Initialize
+const initialState = {
+  value: 0,
+};
+
+// Reducer
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case INCREASE:
+      return {
+        ...state,
+        value: state.value + 1,
+      };
+
+    case DECREASE:
+      return {
+        ...state,
+        value: state.value - 1,
+      };
+
+    default:
+      return { ...state };
+  }
+};
+
+export default reducer;
+```
+
+### /src/store/rootReducer.ts (js 동일)
 
 ```
 import { combineReducers } from 'redux';
@@ -80,7 +119,7 @@ const rootReducer = combineReducers({
 export default rootReducer;
 ```
 
-### src/store/configureStore.ts
+### src/store/configureStore.ts (js는 export type Rootstate 삭제)
 
 ```
 import { createStore, applyMiddleware } from 'redux';
@@ -98,7 +137,7 @@ export type RootState = ReturnType<typeof store.getState>;
 export default store;
 ```
 
-### /src/index.ts
+### /src/index.ts (js 동일)
 
 ```
 import React from 'react';
@@ -151,6 +190,28 @@ const Counter = ({
 export default Counter;
 ```
 
+### /src/components/Counter.jsx
+
+```
+import React from 'react';
+
+const Counter = ({
+  number,
+  onIncrease,
+  onDecrease,
+}: Props) => {
+  return (
+    <div>
+      <h1>{number}</h1>
+      <button onClick={onIncrease}>+ 1</button>
+      <button onClick={onDecrease}>- 1</button>
+    </div>
+  );
+};
+
+export default Counter;
+```
+
 ### /src/components/CounterContainer.tsx
 
 ```
@@ -172,7 +233,27 @@ const CounterContainer = () => {
 export default CounterContainer;
 ```
 
-### /src/App.tsx
+### /src/components/CounterContainer.jsx
+
+```
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Counter from './Counter';
+import { increase, decrease } from '../store/modules/counter';
+
+const CounterContainer = () => {
+  const counterNum = useSelector(state => state.counter.value);
+  const dispatch = useDispatch();
+  const onIncrease = useCallback(() => dispatch(increase()), [dispatch]);
+  const onDecrease = useCallback(() => dispatch(decrease()), [dispatch]);
+
+  return <Counter number={counterNum} onIncrease={onIncrease} onDecrease={onDecrease} />;
+};
+
+export default CounterContainer;
+```
+
+### /src/App.tsx (jsx 동일)
 ```
 import React from 'react';
 import CounterContainer from './components/CounterContainer';
