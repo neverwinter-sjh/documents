@@ -279,16 +279,6 @@ rm -rf package-lock.json
 del /f /q /a package-lock.json 
 ```
 
-### 플러그인 설명
-
-* eslint : 코드의 문법을 검사하는 린팅과 코드의 스타일을 잡아주는 포맷팅 기능
-* @typescript-eslint/eslint-plugin : Typescript 관련 린팅규칙을 설정하는 플러그인
-* @typescript-eslint/parser : Typescript 를 파싱하기 위해 사용
-* eslint-plugin-react : React에 관한 린트설정을 지원
-* eslint-plugin-react-hooks : React Hooks의 규칙을 강제하도록 하는 플러그인
-* eslint-plugin-jsx-a11y : JSX 내의 접근성 문제에 대해 즉각적인 AST 린팅 피드백을 제공
-* eslint-plugin-import : ES2015+의 import/export 구문을 지원하도록 함
-
 ### .eslintrc.js 수정
 
 ```
