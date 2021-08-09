@@ -27,7 +27,7 @@ yarn add --dev @babel/core babel-loader @babel/preset-react @babel/preset-env es
 ## webpack 및 plugin
 
 ```
-yarn add -D webpack webpack-cli eslint-loader html-loader file-loader url-loader css-loader sass-loader sass html-webpack-plugin mini-css-extract-plugin dotenv-webpack
+yarn add -D webpack webpack-cli eslint-webpack-plugin html-loader file-loader url-loader css-loader sass-loader sass html-webpack-plugin mini-css-extract-plugin dotenv-webpack
 ```
 
 ## webpack.config.js
