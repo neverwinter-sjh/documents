@@ -37,6 +37,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Dotenv = require('dotenv-webpack');
+const uglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = (env, options) => {
   const config = {
@@ -337,6 +338,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Dotenv = require('dotenv-webpack');
+const uglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = (env, options) => {
   const config = {
