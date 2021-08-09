@@ -34,8 +34,8 @@ type CounterState = {
 // Constants
 export const INCREASE = 'counter/INCREASE' as const;
 export const DECREASE = 'counter/DECREASE' as const;
-export const INCREASE_ASYNC = 'counter/INCREASE_ASYNC';
-export const DECREASE_ASYNC = 'counter/DECREASE_ASYNC';
+export const INCREASE_ASYNC = 'counter/INCREASE_ASYNC' as const;
+export const DECREASE_ASYNC = 'counter/DECREASE_ASYNC' as const;
 
 // Actions
 export const increase = () => ({ type: INCREASE });
@@ -87,7 +87,68 @@ const reducer = (state: CounterState = initialState, action: CounterAction) => {
 export default reducer;
 ```
 
-### /src/store/rootSaga.ts
+### /src/store/modules/counter.js
+
+```
+import { delay, put, takeEvery, takeLatest } from 'redux-saga/effects';
+
+// Constants
+export const INCREASE = 'counter/INCREASE';
+export const DECREASE = 'counter/DECREASE';
+export const INCREASE_ASYNC = 'counter/INCREASE_ASYNC';
+export const DECREASE_ASYNC = 'counter/DECREASE_ASYNC';
+
+// Actions
+export const increase = () => ({ type: INCREASE });
+export const decrease = () => ({ type: DECREASE });
+export const increaseAsync = () => ({ type: INCREASE_ASYNC });
+export const decreaseAsync = () => ({ type: DECREASE_ASYNC });
+
+// Saga actions
+function* increaseSaga() {
+  yield delay(1000);
+  yield put(increase());
+}
+
+function* decreaseSaga() {
+  yield delay(1000);
+  yield put(decrease());
+}
+
+export function* counterSaga() {
+  yield takeEvery(INCREASE_ASYNC, increaseSaga);
+  yield takeLatest(DECREASE_ASYNC, decreaseSaga);
+}
+
+// Initialize
+const initialState = {
+  value: 0,
+};
+
+// Reducer
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case INCREASE:
+      return {
+        ...state,
+        value: state.value + 1,
+      };
+
+    case DECREASE:
+      return {
+        ...state,
+        value: state.value - 1,
+      };
+
+    default:
+      return { ...state };
+  }
+};
+
+export default reducer;
+```
+
+### /src/store/rootSaga.ts (js 동일)
 
 ```
 import { all } from 'redux-saga/effects';
@@ -98,7 +159,7 @@ export default function* rootSaga() {
 }
 ```
 
-### /src/store/configureStore.ts
+### /src/store/configureStore.ts (js는 Rootstate 삭제)
 
 ```
 import { createStore, applyMiddleware } from 'redux';
@@ -162,6 +223,33 @@ const Counter = ({
 export default Counter;
 ```
 
+### /src/components/Counter.jsx
+
+```
+import React from 'react';
+
+const Counter = ({
+  number,
+  onIncrease,
+  onDecrease,
+  onIncreaseAsync,
+  onDecreaseAsync,
+}: Props) => {
+  return (
+    <div>
+      <h1>{number}</h1>
+      <button onClick={onIncrease}>+ 1</button>
+      <button onClick={onDecrease}>- 1</button>
+      <hr />
+      <button onClick={onIncreaseAsync}>+ 1(Async)</button>
+      <button onClick={onDecreaseAsync}>- 1(Async)</button>
+    </div>
+  );
+};
+
+export default Counter;
+```
+
 ### /src/components/CounterContainer.tsx
 
 ```
@@ -178,6 +266,47 @@ import {
 
 const CounterContainer = () => {
   const counterNum = useSelector((state: RootState) => state.counter.value);
+  const dispatch = useDispatch();
+  const onIncrease = useCallback(() => dispatch(increase()), [dispatch]);
+  const onDecrease = useCallback(() => dispatch(decrease()), [dispatch]);
+  const onIncreaseAsync = useCallback(
+    () => dispatch(increaseAsync()),
+    [dispatch]
+  );
+  const onDecreaseAsync = useCallback(
+    () => dispatch(decreaseAsync()),
+    [dispatch]
+  );
+
+  return (
+    <Counter
+      number={counterNum}
+      onIncrease={onIncrease}
+      onDecrease={onDecrease}
+      onIncreaseAsync={onIncreaseAsync}
+      onDecreaseAsync={onDecreaseAsync}
+    />
+  );
+};
+
+export default CounterContainer;
+```
+
+### /src/components/CounterContainer.jsx
+
+```
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Counter from './Counter';
+import {
+  increase,
+  decrease,
+  increaseAsync,
+  decreaseAsync,
+} from '../store/modules/counter';
+
+const CounterContainer = () => {
+  const counterNum = useSelector(state => state.counter.value);
   const dispatch = useDispatch();
   const onIncrease = useCallback(() => dispatch(increase()), [dispatch]);
   const onDecrease = useCallback(() => dispatch(decrease()), [dispatch]);
