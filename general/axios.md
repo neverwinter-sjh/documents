@@ -49,7 +49,7 @@ instance.interceptors.request.use(
 );
 
 /**
- * 응답 직후 설정
+ * Response 직후 설정
  * @function
  * @param {function} anonymous - http status 200. 응답 성공 직전 호출. then()으로 이어짐.
  * @param {function} anonymous - http 200이 아닌 경우. 응답 에러 직전 호출. catch()로 이어짐
