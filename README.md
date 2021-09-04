@@ -12,4 +12,4 @@
 
 ## API 통신
 
-# [Axios 설정]
+- [Axios 설정](https://github.com/neverwinter-sjh/documents/blob/main/general/axios.md)
