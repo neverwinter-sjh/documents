@@ -16,4 +16,4 @@
 
 ## Javascript Tips
 
-- [Object Key값을 동적으로 변경하는 법]
+- [Object Key값을 동적으로 변경하는 법](https://github.com/neverwinter-sjh/documents/blob/main/general/js-object-tips1.md)
