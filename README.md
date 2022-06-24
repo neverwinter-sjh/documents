@@ -13,3 +13,7 @@
 ## API 통신
 
 - [Axios 설정](https://github.com/neverwinter-sjh/documents/blob/main/general/axios.md)
+
+## Javascript Tips
+
+- [Object Key값을 동적으로 변경하는 법]
