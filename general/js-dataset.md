@@ -1,6 +1,4 @@
-# Javascript Tips
-
-## 1. dataset 활용
+## dataset 활용
 
 ```
 <ul>
