@@ -19,9 +19,9 @@ attribute 'data-'로 시작한 이후의 값이 JSON화 되어 위와 같은 값
 ```
 <script>
 document.querySelector('li').dataset.monthSalary = 1000;
+</script>
 
 // 결과
 // <li data-month-salary="1000"></li>
-</script>
 ```
 
