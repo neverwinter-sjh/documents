@@ -1,4 +1,4 @@
-## Object의 key값을 동적으로 변경하는 법
+## 1. Object의 key값을 동적으로 변경하는 법
 
 ```
 const namespace = '-webkit';
@@ -11,7 +11,7 @@ const style = {
 위와 같이 key값을 배열로 설정하면 된다.
 
 
-## dataset 활용
+## 2. dataset 활용
 
 ```
 <ul>
