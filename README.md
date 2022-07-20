@@ -16,5 +16,5 @@
 
 ## Javascript Tips
 
-- [Object Key값을 동적으로 변경](https://github.com/neverwinter-sjh/documents/blob/main/general/js-object-key-change.md)
+- [Object Key값을 동적으로 변경](https://github.com/neverwinter-sjh/documents/blob/main/general/js-tips.md#1-object%EC%9D%98-key%EA%B0%92%EC%9D%84-%EB%8F%99%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%B3%80%EA%B2%BD%ED%95%98%EB%8A%94-%EB%B2%95)
 - [tag에 dataset 활용하기](https://github.com/neverwinter-sjh/documents/blob/main/general/js-dataset.md)
