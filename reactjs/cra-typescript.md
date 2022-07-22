@@ -91,14 +91,15 @@ module.exports = {
 ```
 {
   "singleQuote": true,
-  "semi": true,
+  "semi": false,
   "useTabs": false,
   "tabWidth": 2,
   "trailingComma": "es5",
-  "printWidth": 80,
+  "printWidth": 400,
   "jsxBracketSameLine": false,
   "arrowParens": "avoid",
-  "proseWrap": "never"
+  "proseWrap": "never",
+  "singleAttributePerLine": true,
 }
 ```
 
