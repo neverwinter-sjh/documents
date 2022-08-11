@@ -40,21 +40,12 @@ eslint의 기본 설정을 init하고 마지막에 npm 설치를 해준다.
 6. Use a popular style guide
 7. Airbnb
 8. Javascript
-9. NPM 설치 (YES)
+9. yarn 설치 (YES)
 
 Airbnb 관련 설정은 쓰지 않을 것이므로 삭제한다.
 
 ```
 yarn remove eslint-config-airbnb
-```
-
-yarn을 사용하고 있으므로 충돌 방지를 위해 npm lock을 제거한다.
-
-```bash
-rm -rf package-lock.json
-
-(windows)
-del /f /q /a package-lock.json 
 ```
 
 ### .eslintrc.js 수정
