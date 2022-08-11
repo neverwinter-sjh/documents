@@ -8,7 +8,7 @@ React Router를 설치하고 관련 옵션을 설정한다.
 yarn add react-router-dom
 ```
 
-Typescript를 사용한다면 아래와 같이 추가한다.
+Typescript를 사용한다면 types를 추가로 설치한다.
 
 ```
 yarn add -D @types/react-router-dom
