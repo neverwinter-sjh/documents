@@ -6,6 +6,7 @@
 * Typescript
 * Eslint
 * Prettier
+* Craco
 
 ## 순서
 
@@ -89,25 +90,106 @@ yarn remove eslint-config-airbnb
 }
 ```
 
-### cross-env 설치
-
-각종 설정 node 환경변수를 window와 mac, iinux에서 같은 방식으로 추가해주기 위해 설치한다.
-
-주요 목적은 react를 실행할 때 browser가 계속 띄워지므로 이를 제거하기 위해서이다.
+### croco 설치
 
 ```
-yarn add -D cross-env
+yarn add @craco/carco craco-alias
 ```
 
-설치 후에 package.json을 수정한다.
+### craco.config.js 작성(typescript)
 
 ```
-"start": "react-scripts start",
+const CracoAlias = require('craco-alias');
 
-=>
-
-"start": "cross-env BROWSER=none react-scripts start",
+module.exports = {
+  plugins: [
+    {
+      plugin: CracoAlias,
+      options: {
+        source: 'tsconfig',
+        tsConfigPath: 'tsconfig.paths.json',
+      },
+    },
+  ],
+};
 ```
+
+### tsconfig.paths.json 작성
+```
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@hooks/*": ["src/hooks/*"],
+      "@pages/*": ["src/pages/*"],
+      "@services/*": ["src/services/*"],
+      "@utils/*": ["src/utils/*"],
+      "@screens/*": ["src/screens/*"],
+      ...
+    }
+  }
+}
+```
+
+### tsconfig.json 설정
+```
+{
+  "extends": "./tsconfig.paths.json",
+  "compilerOptions": {
+    ...
+  },
+  "include": [
+  	...
+  ]
+}
+```
+
+### craco.config.js (javascript)
+```
+const CracoAlias = require('craco-alias')
+
+module.exports = {
+  plugins: [
+    {
+      plugin: CracoAlias,
+      options: {
+        source: 'options',
+        baseUrl: './',
+        aliases: {
+          '@api': './src/api',
+          '@assets': './src/assets',
+          '@components': './src/components',
+          '@hooks': './src/hooks',
+          '@pages': './src/pages',
+          '@style': './src/style',
+          '@utils': './src/utils',
+        },
+      },
+    },
+  ],
+}
+```
+
+### package.json 수정
+```
+{
+  "dependencies": {
+    ...
+  },
+  "scripts": {
+    "start": "craco start",
+    "build:dev": "craco start",
+    "build:prod": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    ...
+  }
+}
+```
+
 
 ### Sass(Scss) 사용하기
 
