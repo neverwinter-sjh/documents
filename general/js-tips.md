@@ -42,6 +42,7 @@ document.querySelector('li').dataset.monthSalary = 1000;
 ## 3. Object의 모든 key, value를 readonly로 만드는 방법
 
 Object.freeze(object)를 이용하면 된다.
+
 그러나 child 구조까지 모두 freeze되지는 않기 때문에 아래와 같은 deepFreeze 함수를 만들어서 사용한다.
 
 ```
