@@ -99,7 +99,7 @@ yarn add @craco/craco craco-alias
 ### craco.config.ts 작성(typescript)
 
 ```
-const CracoAlias = require('craco-alias');
+import CracoAlias from 'craco-alias'
 
 module.exports = {
   plugins: [
@@ -111,7 +111,7 @@ module.exports = {
       },
     },
   ],
-};
+}
 ```
 
 ### tsconfig.paths.json 작성
