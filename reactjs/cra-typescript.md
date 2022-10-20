@@ -97,7 +97,7 @@ yarn remove eslint-config-airbnb
 yarn add @craco/craco craco-alias
 ```
 
-### craco.config.ts 작성(typescript)
+### craco.config.js 작성(typescript)
 
 ```
 const CracoAlias = require('craco-alias')
