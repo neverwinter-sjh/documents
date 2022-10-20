@@ -63,12 +63,13 @@ yarn remove eslint-config-airbnb
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 2020,
+    "ecmaVersion": "latest",
     "sourceType": "module"
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-var-requires": "off"
   }
 }
 ```
@@ -99,7 +100,7 @@ yarn add @craco/craco craco-alias
 ### craco.config.ts 작성(typescript)
 
 ```
-import CracoAlias from 'craco-alias'
+const CracoAlias = require('craco-alias')
 
 module.exports = {
   plugins: [
