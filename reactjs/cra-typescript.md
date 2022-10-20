@@ -180,6 +180,7 @@ module.exports = {
   "scripts": {
     "dev": "yarn start",
     "start": "BROWSER=none craco start",
+    "start": "set BROWSER=none && craco start", // windows만
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
