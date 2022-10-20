@@ -182,7 +182,8 @@ module.exports = {
     "build:prod": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     ...
