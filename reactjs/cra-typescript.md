@@ -93,7 +93,7 @@ yarn remove eslint-config-airbnb
 ### croco 설치
 
 ```
-yarn add @craco/carco craco-alias
+yarn add @craco/craco craco-alias
 ```
 
 ### craco.config.js 작성(typescript)
