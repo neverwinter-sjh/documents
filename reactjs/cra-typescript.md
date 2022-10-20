@@ -178,9 +178,8 @@ module.exports = {
     ...
   },
   "scripts": {
-    "start": "craco start",
-    "build:dev": "craco start",
-    "build:prod": "craco start",
+    "dev": "yarn start",
+    "start": "BROWSER=none craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
